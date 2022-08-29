@@ -15,20 +15,25 @@ function incluirUsuario(){
             //peticiones ajax
             $.ajax({
                 type: "POST",
-                url: "",
+                url: "backend/registrarUsuarios.php?option=incluirUsuario",
                 dataType: "json",
                 data: $(this).serialize(),
                 sucess: function(respuesta){
                     //ocultar barra
                     if (respuesta.error == 1) {
                         //mensaje
-                        //el email ya existe
-                        alert("el email ya existe");
+                        //el email es invalido
+                        alert("el email es invalido");
                     }
                     if (respuesta.error == 2) {
                         //mensaje
                         //el password sea invalido
                         alert("el password sea invalido");
+                    }
+                    if (respuesta.error == 3) {
+                        //mensaje
+                        //el email ya existe
+                        alert("ya existe el email");
                     }
                     if (respuesta.exito == 1) {
                         //mensaje
